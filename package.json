@@ -1,0 +1,22 @@
+{
+  "name": "webapp",
+  "version": "1.0.0",
+  "description": "Web application for CS 252 Lab 6\r Joshua Sen and Alex Cogelja",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/senjoshua/webapp.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/senjoshua/webapp/issues"
+  },
+  "homepage": "https://github.com/senjoshua/webapp#readme",
+  "dependencies": {
+    "express": "^4.16.4"
+  }
+}
