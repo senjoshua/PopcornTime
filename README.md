@@ -2,6 +2,9 @@
 Web application for CS 252 Lab 6
 Joshua Sen and Alex Cogelja
 
-- [ ] set up node js
-- [ ] connect to database
-- [ ] mulitiple users
+- [X] set up node js
+- [X] set up express
+- [ ] set up firebase for database
+- [ ] mulitiple users (login/store user info)
+- [ ] connect to API
+- [ ] hosting using firebase
