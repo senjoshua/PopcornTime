@@ -14,11 +14,18 @@
   <!-- favicon -->
   <link rel="icon" href="images/favicon.png">
 
+  <!-- jQuery library -->
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+  <!-- Popper JS -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.0/umd/popper.min.js"></script>
+  <!-- Latest compiled JavaScript -->
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.1.0/js/bootstrap.min.js"></script>
+
 </head>
 
 <body data-spy="scroll" data-target=".navbar" data-offset="50">
   <nav class="navbar navbar-expand-md bg-dark navbar-dark sticky-top" id=myNavbar>
-  <a class="navbar-brand" href="#home">The name of the webapp will go here</a>
+  <a class="navbar-brand" href="#home">Website Name</a>
   <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarCollapse">
     <span class="navbar-toggler-icon"></span>
   </button>
@@ -30,16 +37,60 @@
   </ul>
   </nav>
 
-  <div id="home" class="container-fluid">
-    <h1 class="text-center">Our wonderful web-app's home page</h1>
-  </div>
-
-  <div id="about" class="container-fluid">
-      <h2 class="text-center">A little about how the site works and what it does</h2>
+  <div class="sidenav">
+    <div class="login-main-text">
+       <h2><br> TV Show List </h2>
+       <p>Keep track of what you are watching now and what you are watching next</p>
     </div>
+ </div>
 
+ <div id="home" class="main">
+    <div class="col-md-6 col-sm-12">
+       <form class="login-form" novalidate>
+             <div class="form-group">
+                <label>User Name</label>
+                <input type="text" class="form-control" placeholder="User Name" required>
+                <div class="invalid-feedback">Please enter a username</div>
+             </div>
+             <div class="form-group">
+                <label>Password</label>
+                <input type="password" class="form-control" placeholder="Password" required>
+                <div class="invalid-feedback">Don't forget to enter a password</div>
+             </div>
+             <button type="submit" class="btn btn-black">Login</button>
+             <button type="submit" class="btn btn-secondary">Register</button>
+          </form>
+    </div>
+ </div>
+ 
+
+  <!-- <div id="about" class="container-fluid">
+      <h2 class="text-center">A simple website that allows users to track TV shows that they want to watch</h2>
+  </div> -->
+    
 </body>
 </html>
+
+<script>
+    // Example starter JavaScript for disabling form submissions if there are invalid fields
+    (function() {
+      'use strict';
+      window.addEventListener('load', function() {
+        // Fetch all the forms we want to apply custom Bootstrap validation styles to
+        var forms = document.getElementsByClassName('login-form');
+        // Loop over them and prevent submission
+        var validation = Array.prototype.filter.call(forms, function(form) {
+          form.addEventListener('submit', function(event) {
+            if (form.checkValidity() === false) {
+              event.preventDefault();
+              event.stopPropagation();
+            }
+            form.classList.add('was-validated');
+          }, false);
+        });
+      }, false);
+    })();
+    </script>
 
 <script src="https://www.gstatic.com/firebasejs/5.9.3/firebase.js"></script>
 <script>
