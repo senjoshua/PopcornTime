@@ -7,16 +7,25 @@
         <script>
             function testFunction(){
 
-                var test = '' //the variable that we use to get the textfield contents
-                test = test + document.getElementById('thisisatest').value //concatenate the string
-                console.log(test) //test output
-                test = test.replace(' ', '-') //making it api friendly
-                console.log(test) 
+                var rand = Math.random()
+                var apiKey = '782669d9'
+                if(rand > .5){
+                    apiKey = 'af7a873c'
+                    console.log('Using Josh\'s key')
+                } else {
+                    console.log('Using My Key')
+                }
+                var title = '' //the variable that we use to get the textfield contents
+                title += document.getElementById('thisisatest').value //concatenate the string
+                console.log('title: ' + title) //test output
+                title = title.replace(' ', '-') //making it api friendly
+                console.log('title w/o spaces: ' + title) 
                 //var apiCall = 'http://www.omdbapi.com/?t=Jaws&apikey=782669d9' //should be modified a bit
                 var apicall = 'http://www.omdbapi.com/?t=' //prefix
-                apicall = apicall + test 
-                apicall = apicall + '&apikey=782669d9' //finished version
-
+                apicall += title 
+                apicall += '&apikey='
+                apicall += apiKey
+                //apicall = apicall + '&apikey=782669d9' //finished version
                 //Josh's key: af7a873c
 
                 console.log(apicall)
@@ -28,6 +37,10 @@
                 if(request.status >= 200 && request.status < 400) {
                     console.log(data.Title)
                     console.log(this.response)
+                    var node = document.createElement("LI")
+                    var text = document.createTextNode(data.Title)
+                    node.appendChild(text)
+                    document.getElementById("list").appendChild(node)
                 } else {
                     console.log('Error')
                 }
@@ -43,5 +56,7 @@ request.send()
         </form>
             <button type="button" onclick="testFunction()">Click Me Hoe</button>
         <!-- <script src="test.js"></script> -->
+        <ul style="list-style-type:disc;" id="list">
+        </ul>
     </body>
 </html>
