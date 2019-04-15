@@ -11,6 +11,17 @@ app.get("/", function(req, res){
      res.sendFile(__dirname + "/public/index.html");
 });
 
+app.post('/profile', function(req, res) {
+     //add here
+     // res.redirect(__dirname  + '/public/temp.html');
+     res.sendFile(__dirname + "/public/temp.html");
+});
+
+// app.post("/logout", function (req, res) {
+//      req.logout();
+//      req.session.destroy();
+//      res.send({err: 0, redirectUrl: "/"});
+//    });
 
 // Initialize Firebase
 // TODO: Replace with your project's customized code snippet

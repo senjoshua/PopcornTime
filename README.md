@@ -7,6 +7,9 @@ https://web-app19.firebaseapp.com/
 - [X] Set up Node JS
 - [X] Set up Express
 - [X] Set up Firebase
+- [X] Mulitiple users (login/store user info)
+- [X] Connect to API
+- [ ] Parse JSON
 - [ ] Set up database
-- [ ] mulitiple users (login/store user info)
-- [ ] connect to API
+- [ ] Store/retrieve data from database
+
