@@ -10,13 +10,9 @@
   },
   "hosting": {
     "public": "public",
-    "ignore": [
-      "firebase.json",
-      "**/.*",
-      "**/node_modules/**"
-    ]
-  },
-  "storage": {
-    "rules": "storage.rules"
+    "rewrites": [{
+      "source": "/profile",
+      "function": "app"
+    }]
   }
 }

@@ -82,8 +82,9 @@
             form.action = url;
             form.submit();
             };
-        
+            location = '/temp.html';
             redirect('/profile', 'post');
+            
 
           document.getElementById('quickstart-account-details').textContent = JSON.stringify(user, null, '  ');
         } 

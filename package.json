@@ -19,7 +19,8 @@
   "homepage": "https://github.com/senjoshua/webapp#readme",
   "dependencies": {
     "express": "^4.16.4",
-    "firebase": "^5.9.3"
+    "firebase": "^5.9.3",
+    "firebase-functions": "^2.2.1"
   },
   "devDependencies": {
     "eslint": "^5.16.0"
