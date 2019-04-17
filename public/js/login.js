@@ -38,10 +38,7 @@
       });
     }
 
-    function toggleSignIn() {
-      if (firebase.auth().currentUser) {
-         firebase.auth().signOut();
-      } else {
+    function SignIn() {
         var email = document.getElementById('email').value;
         var password = document.getElementById('password').value;
         if (email.length < 4) {
@@ -64,17 +61,12 @@
           }
           console.log(error);
         });
-      }
     }
 
     function initApp() {
       // Listening for auth state changes
       firebase.auth().onAuthStateChanged(function(user) {
         if (user) {
-            // User is signed in
-            alert("redirecting...");
-            //redirect to profile page
-            //one way rn
             var redirect = function(url, method) {
             var form = document.createElement('form');
             document.body.appendChild(form);
@@ -82,17 +74,14 @@
             form.action = url;
             form.submit();
             };
-            location = '/temp.html';
+            // location = '/temp.html';
             redirect('/profile', 'post');
-            
-
-          document.getElementById('quickstart-account-details').textContent = JSON.stringify(user, null, '  ');
         } 
         
       });
 
       document.getElementById('register-button').addEventListener('click', handleSignUp, false);
-      document.getElementById('login-button').addEventListener('click', toggleSignIn, false);
+      document.getElementById('login-button').addEventListener('click', SignIn, false);
      
     }
 

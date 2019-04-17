@@ -9,7 +9,7 @@ https://web-app19.firebaseapp.com/
 - [X] Set up Firebase
 - [X] Mulitiple users (login/store user info)
 - [X] Connect to API
-- [ ] Parse JSON
+- [X] Parse JSON
 - [ ] Set up database
 - [ ] Store/retrieve data from database
 

@@ -58,5 +58,38 @@ request.send()
         <!-- <script src="test.js"></script> -->
         <ul style="list-style-type:disc;" id="list">
         </ul>
+
+        <button type="submit" id="logout-button">Logout</button>
+
     </body>
 </html>
+
+<script src="https://www.gstatic.com/firebasejs/5.9.3/firebase.js"></script>
+<script>
+  // Initialize Firebase
+  var config = {
+    apiKey: "AIzaSyDf9K0vWDDZ0wYKN7sB7awYc29Ame97eh0",
+    authDomain: "web-app19.firebaseapp.com",
+    databaseURL: "https://web-app19.firebaseio.com",
+    projectId: "web-app19",
+    storageBucket: "web-app19.appspot.com",
+    messagingSenderId: "888088331447"
+  };
+  firebase.initializeApp(config);
+</script>
+
+<!-- Firebase App is always required and must be first -->
+<script src="/__/firebase/5.9.3/firebase-app.js"></script>
+
+<!-- Add additional services that you want to use -->
+<script src="/__/firebase/5.9.3/firebase-auth.js"></script>
+<script src="/__/firebase/5.9.3/firebase-database.js"></script>
+<script src="/__/firebase/5.9.3/firebase-messaging.js"></script>
+<script src="/__/firebase/5.9.3/firebase-functions.js"></script>
+
+<!-- Comment out (or don't include) services that you don't want to use -->
+<!-- <script src="/__/firebase/5.9.3/firebase-storage.js"></script> -->
+
+<script src="/__/firebase/init.js"></script>
+
+<script src="js/profile.js"></script>
