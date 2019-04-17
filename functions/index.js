@@ -9,13 +9,13 @@ app.get('/', (req, res) => {
   });
 
 app.post('/profile', (req, res) => {
-    let reqPath = path.join(__dirname, '../');
-    res.sendFile(reqPath + '/public/temp.html');
+    // let reqPath = path.join(__dirname, '../');
+    // console.log(__dirname);
+    res.sendFile(__dirname + '/public/temp.html');
 });
   
 app.get('/logout', (req, res) => {
     res.redirect('/');
 });
-
 
 exports.app = functions.https.onRequest(app);

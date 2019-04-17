@@ -10,9 +10,14 @@
   },
   "hosting": {
     "public": "public",
-    "rewrites": [{
-      "source": "/**",
+    "rewrites": [
+      {
+      "source": "/profile",
       "function": "app"
+      },
+      {
+        "source": "/logout",
+        "function": "app"
     }]
   }
 }
