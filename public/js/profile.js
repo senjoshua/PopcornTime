@@ -1,6 +1,11 @@
-// indow.onload = function() {
+// window.onload = function() {
     document.getElementById('logout-button').addEventListener('click', logOut, false);
-//   };
+    firebase.auth().onAuthStateChanged(function(user) {
+        if (user) {
+          document.getElementById('email').textContent = "Welcome " + user.email + "!";
+        } 
+    });
+//   });
 
 function logOut() {
     if (firebase.auth().currentUser) {
@@ -17,3 +22,5 @@ function logOut() {
         redirect('/logout', 'get');
     }
 }
+
+

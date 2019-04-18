@@ -11,7 +11,7 @@ app.get('/', (req, res) => {
 app.post('/profile', (req, res) => {
     // let reqPath = path.join(__dirname, '../');
     // console.log(__dirname);
-    res.sendFile(__dirname + '/public/temp.html');
+    res.sendFile(__dirname + '/public/profile.html');
 });
   
 app.get('/logout', (req, res) => {
