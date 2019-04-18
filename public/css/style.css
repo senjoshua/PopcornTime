@@ -16,13 +16,14 @@ body {
 }
 
 .container-fluid{
-    margin-top: 50%;
+    margin-top: 25%;
     height: 100%;
     padding-top: 20px;
 }
 
 .main {
     height: 100%;
+    background-color:#D8D7D7; 
     padding: 0px 10px;
 }
 
@@ -74,6 +75,6 @@ body {
 } */
 
 .btn-black{
-    background-color: #000 !important;
+    background-color: #710A0A !important;
     color: #fff;
 }

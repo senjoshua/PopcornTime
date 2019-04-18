@@ -1,5 +1,6 @@
 body {
     /* font-family: "Lato", sans-serif; */
+    background-color:#D8D7D7; 
 }
 
 .main-head{
@@ -23,4 +24,9 @@ body {
 .main {
     height: 100%;
     padding: 0px 10px;
+}
+
+.btn-black{
+    background-color: #710A0A;
+    color: #fff;
 }
