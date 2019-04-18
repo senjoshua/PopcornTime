@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <title>Testing JS</title>
+    </head>
+    <body>
+        <script>
+            
+            function testFunction(){
+
+                var rand = Math.random()
+                var apiKey = '782669d9'
+                if(rand > .5){
+                    apiKey = 'af7a873c'
+                    console.log('Using Josh\'s key')
+                } else {
+                    console.log('Using My Key')
+                }
+                var title = '' //the variable that we use to get the textfield contents
+                title += document.getElementById('thisisatest').value //concatenate the string
+                console.log('title: ' + title) //test output
+                title = title.replace(' ', '-') //making it api friendly
+                console.log('title w/o spaces: ' + title) 
+                //var apiCall = 'https://www.omdbapi.com/?t=Jaws&apikey=782669d9' //should be modified a bit
+                var apicall = 'https://www.omdbapi.com/?t=' //prefix
+                apicall += title 
+                apicall += '&apikey='
+                apicall += apiKey
+                //apicall = apicall + '&apikey=782669d9' //finished version
+                //Josh's key: af7a873c
+
+                console.log(apicall)
+                //any spaces should be formatted with dashes
+                var request = new XMLHttpRequest()
+                request.open('GET', apicall, true)
+                request.onload = function () {
+                    var data = JSON.parse(this.response)
+                    if(request.status >= 200 && request.status < 400 && data.hasOwnProperty('Title')) {
+                        console.log(data.Title)
+                        console.log(this.response)
+                        var table = document.getElementById("table")
+                        var row = table.insertRow(0)
+                        var cell = row.insertCell(0)
+                        cell.innerHTML = data.Title
+                        
+                    } else {
+                        console.log('Error')
+                    }
+                }
+        request.send()
+            }    
+            
+        </script>
+        <form>
+            Enter The Title:
+                <input type="text" name="title" id="thisisatest">
+                <!-- <input type="submit" value="Submit" onclick="testFunction()"> -->
+        </form>
+            <button type="button" onclick="testFunction()">Click Me Hoe</button>
+        <!-- <script src="test.js"></script> -->
+        <table id="grid-selection" class="table table-condensed table-hover table-striped">
+            <thead>
+                <tr>
+                    <td width="200px" id="title-col" data-column="Name" data-identifier="true">Movie Title</td>
+                    <td width="200px" id="runtime-col" data-column="runtime" data-identifier="true">Runtime</td>
+                </tr>    
+            </thead>
+            <tbody id="table">
+                    
+            </tbody>
+        </table>
+
+        <button type="submit" id="logout-button">Logout</button>
+
+    </body>
+</html>
