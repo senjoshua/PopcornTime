@@ -82,4 +82,59 @@ function newElement() {
   }
 }
 
+function testFunction(){
+
+  var rand = Math.random()
+  var apiKey = '782669d9'
+  if(rand > .5){
+      apiKey = 'af7a873c'
+      console.log('Using Josh\'s key')
+  } else {
+      console.log('Using My Key')
+  }
+  var title = '' //the variable that we use to get the textfield contents
+  title += document.getElementById('searchbar').value //concatenate the string
+  console.log('title: ' + title) //test output
+  title = title.replace(' ', '-') //making it api friendly
+  console.log('title w/o spaces: ' + title) 
+  //var apiCall = 'https://www.omdbapi.com/?t=Jaws&apikey=782669d9' //should be modified a bit
+  var apicall = 'https://www.omdbapi.com/?t=' //prefix
+  apicall += title 
+  apicall += '&apikey='
+  apicall += apiKey
+  //Josh's key: af7a873c
+
+  console.log(apicall)
+  //any spaces should be formatted with dashes
+  var request = new XMLHttpRequest()
+  request.open('GET', apicall, true)
+  request.onload = function () {
+      var data = JSON.parse(this.response)
+      if(request.status >= 200 && request.status < 400 && data.hasOwnProperty('Title')) {
+        var li = document.createElement("li");
+        //var inputValue = document.getElementById("searchbar").value;
+        var t = document.createTextNode(data.title);
+        li.appendChild(t);
+        document.getElementById("myUL").appendChild(li);
+        document.getElementById("searchbar").value = "";
+      
+        var span = document.createElement("SPAN");
+        var txt = document.createTextNode("\u00D7");
+        span.className = "close";
+        span.appendChild(txt);
+        li.appendChild(span);
+      
+        for (i = 0; i < close.length; i++) {
+          close[i].onclick = function() {
+            var div = this.parentElement;
+            div.style.display = "none";
+          }
+        }
+      } else {
+          console.log('Error')
+      }
+  }
+request.send()
+}  
+
 
