@@ -9,7 +9,7 @@
   <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css" integrity="sha384-WskhaSGFgHYWDcbwN70/dfYBj47jz9qbsMId/iRN3ewGhXQFZCSftd1LZCfmhktB" crossorigin="anonymous">
 
   <!-- CSS  stylesheet -->
-  <link rel="stylesheet" href="style.css">
+  <link rel="stylesheet" href="css/profile-style.css">
 
   <!-- favicon -->
   <link rel="icon" href="/images/favicon.png?">
@@ -47,38 +47,27 @@
   <div id="search" class="container">
       <h4><br>Search for a TV Show or Movie to Add...</h4>
         <div class="input-group mb-3 col-5">
-            <input type="text" class="form-control" placeholder="Search">
+            <input type="text" class="form-control" placeholder="Search" id='searchbar'>
             <div class="input-group-append">
-              <button class="btn btn-outline-dark" id='search-button'>Search</button>
+              <button class="btn btn-outline-dark" id='search-button'>Add</button>
             </div>
         </div>
   </div>
 
   <div id="list" class="container">
-      <table class="table">
-          <thead class="thead-dark">
-            <tr>
-              <th>Title</th>
-              <th>Year</th>
-              <th>Rated</th>
-              <th>Released</th>
-            </tr>
-          </thead>
-          <tbody>
-            <tr>
-              <td>Game of Thrones</td>
-              <td>2011-</td>
-              <td>TV-MA</td>
-              <td>17 Apr 2011</td>
-            </tr>
-            <tr>
-                <td>Another show</td>
-                <td>2019-</td>
-                <td>TV-G</td>
-                <td>17 Apr 2019</td>
-              </tr>
-          </tbody>
-        </table>
+        <ul id="myUL">
+            <li>Game of Thrones <br> 
+            Released: 17 Apr 2011<br>
+            Genre: Action, Adventure, Drama, Fantasy, Romance<br>
+            Plot: Nine noble families fight for control over the mythical lands of Westeros, while an ancient enemy returns after being dormant for thousands of years.<br>
+            </li>
+            <li class="checked">
+                  Another Show<br> 
+                  Released: <br>
+                  Genre:<br>
+                  Plot: <br>
+            </li>
+          </ul>
   </div>
 
     
@@ -114,3 +103,5 @@
 <script src="/__/firebase/init.js"></script>
 
 <script src="js/profile.js"></script>
+
+    
