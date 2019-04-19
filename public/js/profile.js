@@ -23,7 +23,7 @@ function logOut() {
     }
 }
 
-document.getElementById('search-button').addEventListener('click', newElement, false);
+document.getElementById('search-button').addEventListener('click', testFunction, false);
 
 // Create a "close" button and append it to each list item
 var myNodelist = document.getElementsByTagName("LI");
@@ -113,7 +113,7 @@ function testFunction(){
       if(request.status >= 200 && request.status < 400 && data.hasOwnProperty('Title')) {
         var li = document.createElement("li");
         //var inputValue = document.getElementById("searchbar").value;
-        var t = document.createTextNode(data.title);
+        var t = document.createTextNode(data.Title);
         li.appendChild(t);
         document.getElementById("myUL").appendChild(li);
         document.getElementById("searchbar").value = "";
