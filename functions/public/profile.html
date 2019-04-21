@@ -56,7 +56,7 @@
 
   <div id="list" class="container">
         <ul id="myUL">
-            <li>Game of Thrones <br> 
+            <!-- <li>Game of Thrones <br> 
             Released: 17 Apr 2011<br>
             Genre: Action, Adventure, Drama, Fantasy, Romance<br>
             Plot: Nine noble families fight for control over the mythical lands of Westeros, while an ancient enemy returns after being dormant for thousands of years.<br>
@@ -67,7 +67,7 @@
                   Genre:<br>
                   Plot: <br>
             </li>
-          </ul>
+          </ul> -->
   </div>
 
     
@@ -86,6 +86,9 @@
     messagingSenderId: "888088331447"
   };
   firebase.initializeApp(config);
+
+  let firestore = firebase.firestore();
+  console.log("Cloud Firestores Loaded");
 </script>
 
 <!-- Firebase App is always required and must be first -->
@@ -96,6 +99,7 @@
 <script src="/__/firebase/5.9.3/firebase-database.js"></script>
 <script src="/__/firebase/5.9.3/firebase-messaging.js"></script>
 <script src="/__/firebase/5.9.3/firebase-functions.js"></script>
+<script src="/__/firebase/5.9.3/firebase-firestore.js"></script>
 
 <!-- Comment out (or don't include) services that you don't want to use -->
 <!-- <script src="/__/firebase/5.9.3/firebase-storage.js"></script> -->

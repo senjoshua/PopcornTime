@@ -1,8 +1,11 @@
 // window.onload = function() {
+    var currentUserID;
     document.getElementById('logout-button').addEventListener('click', logOut, false);
     firebase.auth().onAuthStateChanged(function(user) {
         if (user) {
           document.getElementById('email').textContent = "Welcome " + user.email + "!";
+          currentUserID = user.uid;
+          getShows();
         } 
     });
 //   });
@@ -136,5 +139,55 @@ function testFunction(){
   }
 request.send()
 }  
+
+
+function getShows(){
+  var db = firebase.firestore();
+  db.collection("users").doc(currentUserID).collection("showlist").get().then(function(querySnapshot) {
+    querySnapshot.forEach(function(doc) {
+        // doc.data() is never undefined for query doc snapshots
+        // console.log(doc.id, " => ", doc.data());
+        var title = doc.data().title
+        var released = doc.data().released;
+        var genre = doc.data().genre;
+        var plot = doc.data().plot;
+        addShow(title, released, genre, plot);
+    });
+});
+}
+
+function addShow(title, released, genre, plot){
+
+  console.log("adding shows....");
+
+  var li = document.createElement("li");
+  
+  var titleElement = document.createElement("b")
+  titleElement.textContent = title;
+
+  li.appendChild(titleElement);
+
+  li.appendChild(document.createElement("br"));
+  li.appendChild(document.createTextNode("Released: " + released));
+  li.appendChild(document.createElement("br"));
+  li.appendChild(document.createTextNode("Genre: " + genre));
+  li.appendChild(document.createElement("br"));
+  li.appendChild(document.createTextNode("Plot: " + plot));
+
+  document.getElementById("myUL").appendChild(li);
+
+  var span = document.createElement("SPAN");
+  var txt = document.createTextNode("\u00D7");
+  span.className = "close";
+  span.appendChild(txt);
+  li.appendChild(span);
+
+  for (i = 0; i < close.length; i++) {
+    close[i].onclick = function() {
+      var div = this.parentElement;
+      div.style.display = "none";
+    }
+  }
+}
 
 
