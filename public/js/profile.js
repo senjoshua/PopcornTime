@@ -26,7 +26,7 @@ function logOut() {
     }
 }
 
-document.getElementById('search-button').addEventListener('click', testFunction, false);
+document.getElementById('search-button').addEventListener('click', apiCall, false);
 
 // Create a "close" button and append it to each list item
 var myNodelist = document.getElementsByTagName("LI");
@@ -44,8 +44,9 @@ var close = document.getElementsByClassName("close");
 var i;
 for (i = 0; i < close.length; i++) {
   close[i].onclick = function() {
-    var div = this.parentElement;
-    div.style.display = "none";
+    // var div = this.parentElement;
+    // div.style.display = "none";
+    // deletefromDatabase("Game of Thrones");
   }
 }
 
@@ -58,34 +59,8 @@ list.addEventListener('click', function(ev) {
   }
 }, false);
 
-// Create a new list item when clicking on the "Add" button
-function newElement() {
-  var li = document.createElement("li");
-  var inputValue = document.getElementById("searchbar").value;
-  var t = document.createTextNode(inputValue);
-  li.appendChild(t);
-  if (inputValue === '') {
-    alert("You must write something!");
-  } else {
-    document.getElementById("myUL").appendChild(li);
-  }
-  document.getElementById("searchbar").value = "";
 
-  var span = document.createElement("SPAN");
-  var txt = document.createTextNode("\u00D7");
-  span.className = "close";
-  span.appendChild(txt);
-  li.appendChild(span);
-
-  for (i = 0; i < close.length; i++) {
-    close[i].onclick = function() {
-      var div = this.parentElement;
-      div.style.display = "none";
-    }
-  }
-}
-
-function testFunction(){
+function apiCall(){
 
   var rand = Math.random()
   var apiKey = '782669d9'
@@ -114,25 +89,12 @@ function testFunction(){
   request.onload = function () {
       var data = JSON.parse(this.response)
       if(request.status >= 200 && request.status < 400 && data.hasOwnProperty('Title')) {
-        var li = document.createElement("li");
-        //var inputValue = document.getElementById("searchbar").value;
-        var t = document.createTextNode(data.Title);
-        li.appendChild(t);
-        document.getElementById("myUL").appendChild(li);
-        document.getElementById("searchbar").value = "";
-      
-        var span = document.createElement("SPAN");
-        var txt = document.createTextNode("\u00D7");
-        span.className = "close";
-        span.appendChild(txt);
-        li.appendChild(span);
-      
-        for (i = 0; i < close.length; i++) {
-          close[i].onclick = function() {
-            var div = this.parentElement;
-            div.style.display = "none";
-          }
-        }
+        var title = data.Title;
+        var released = data.Released;
+        var genre = data.Genre;
+        var plot = data.Plot;
+        addShow(title, released, genre, plot);
+        addtoDatabase(title, released, genre, plot);
       } else {
           console.log('Error')
       }
@@ -190,4 +152,35 @@ function addShow(title, released, genre, plot){
   }
 }
 
+function addtoDatabase(title, released, genre, plot){
+  var db = firebase.firestore();
+
+  db.collection("users").doc(currentUserID).collection('showlist')
+  .doc(title).set({
+  title: title,
+  released: released,
+  genre: genre,
+  plot: plot
+  })
+  .then(function() {
+    console.log("Document successfully written!");
+  })
+  .catch(function(error) {
+    console.error("Error writing document: ", error);
+  });
+}
+
+function deletefromDatabase(title){
+
+  var db = firebase.firestore();
+  alert(title);
+  db.collection("users").doc(currentUserID).collection('showlist')
+  .doc(title).delete()
+  .then(function() {
+    console.log("Document successfully deleted!");
+  })
+  .catch(function(error) {
+    console.error("Error removing document: ", error);
+  });
+}
 
