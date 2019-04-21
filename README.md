@@ -10,6 +10,6 @@ https://web-app19.firebaseapp.com/
 - [X] Mulitiple users (login/store user info)
 - [X] Connect to API
 - [X] Parse JSON
-- [ ] Set up database
-- [ ] Store/retrieve data from database
+- [X] Set up Firestore database
+- [X] Store/retrieve data from database
 
