@@ -12,12 +12,17 @@
     "public": "public",
     "rewrites": [
       {
-      "source": "/profile",
-      "function": "app"
+        "source": "/profile",
+        "function": "app"
       },
       {
         "source": "/logout",
         "function": "app"
-    }]
+      }
+    ]
+  },
+  "firestore": {
+    "rules": "firestore.rules",
+    "indexes": "firestore.indexes.json"
   }
 }

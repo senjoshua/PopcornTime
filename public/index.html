@@ -88,6 +88,9 @@
     messagingSenderId: "888088331447"
   };
   firebase.initializeApp(config);
+
+  let firestore = firebase.firestore();
+  console.log("Cloud Firestores Loaded");
 </script>
 
 <!-- Firebase App is always required and must be first -->
@@ -98,9 +101,10 @@
 <script src="/__/firebase/5.9.3/firebase-database.js"></script>
 <script src="/__/firebase/5.9.3/firebase-messaging.js"></script>
 <script src="/__/firebase/5.9.3/firebase-functions.js"></script>
+<script src="/__/firebase/5.9.3/firebase-firestore.js"></script>
 
 <!-- Comment out (or don't include) services that you don't want to use -->
-<!-- <script src="/__/firebase/5.9.3/firebase-storage.js"></script> -->
+<script src="/__/firebase/5.9.3/firebase-storage.js"></script>
 
 <script src="/__/firebase/init.js"></script>
 
