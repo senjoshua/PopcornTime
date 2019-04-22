@@ -40,6 +40,7 @@ function apiCall(){
   }
   var title = '' //the variable that we use to get the textfield contents
   title += document.getElementById('searchbar').value //concatenate the string
+  document.getElementById('searchbar').value = ""
   console.log('title: ' + title) //test output
   title = title.replace(' ', '-') //making it api friendly
   console.log('title w/o spaces: ' + title) 
