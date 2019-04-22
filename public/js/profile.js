@@ -28,17 +28,6 @@ function logOut() {
 
 document.getElementById('search-button').addEventListener('click', apiCall, false);
 
-
-// Add a "checked" symbol when clicking on a list item
-var list = document.querySelector('ul');
-list.addEventListener('click', function(ev) {
-  if (ev.target.tagName === 'LI') {
-      alert("checked");
-    ev.target.classList.toggle('checked');
-  }
-}, false);
-
-
 function apiCall(){
 
   var rand = Math.random()
@@ -92,18 +81,24 @@ function getShows(){
         var released = doc.data().released;
         var genre = doc.data().genre;
         var plot = doc.data().plot;
+        var check = doc.data().check;
         if(doc.id != "testshow"){
-          addShow(title, released, genre, plot);
+          addShow(title, released, genre, plot, check);
         }
     });
 });
 }
 
-function addShow(title, released, genre, plot){
+function addShow(title, released, genre, plot, check){
 
   console.log("adding " + title);
 
   var li = document.createElement("li");
+
+  //check for checked
+  if(check==true){
+    li.classList.toggle('checked');
+  }
   
   var titleElement = document.createElement("b")
   titleElement.textContent = title;
@@ -119,6 +114,9 @@ function addShow(title, released, genre, plot){
 
   li.onclick = function(ev){
     ev.target.classList.toggle('checked');
+    var check = ev.target.classList.contains("checked");
+    updateDatabase(title, check);
+
   }
 
   document.getElementById("myUL").appendChild(li);
@@ -144,7 +142,8 @@ function addtoDatabase(title, released, genre, plot){
   title: title,
   released: released,
   genre: genre,
-  plot: plot
+  plot: plot,
+  check: false
   })
   .then(function() {
     console.log("Document successfully written!");
@@ -167,3 +166,17 @@ function deletefromDatabase(title){
   });
 }
 
+function updateDatabase(title, check){
+  var db = firebase.firestore();
+  db.collection("users").doc(currentUserID).collection('showlist')
+  .doc(title).update({
+    check: check
+    })
+  .then(function() {
+    console.log(title + " successfully updated!");
+  })
+  .catch(function(error) {
+    console.error("Error updating document: ", error);
+  });
+
+}
