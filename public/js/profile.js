@@ -28,27 +28,6 @@ function logOut() {
 
 document.getElementById('search-button').addEventListener('click', apiCall, false);
 
-// Create a "close" button and append it to each list item
-var myNodelist = document.getElementsByTagName("LI");
-var i;
-for (i = 0; i < myNodelist.length; i++) {
-  var span = document.createElement("SPAN");
-  var txt = document.createTextNode("\u00D7");
-  span.className = "close";
-  span.appendChild(txt);
-  myNodelist[i].appendChild(span);
-}
-
-// Click on a close button to hide the current list item
-var close = document.getElementsByClassName("close");
-var i;
-for (i = 0; i < close.length; i++) {
-  close[i].onclick = function() {
-    // var div = this.parentElement;
-    // div.style.display = "none";
-    // deletefromDatabase("Game of Thrones");
-  }
-}
 
 // Add a "checked" symbol when clicking on a list item
 var list = document.querySelector('ul');
@@ -113,14 +92,16 @@ function getShows(){
         var released = doc.data().released;
         var genre = doc.data().genre;
         var plot = doc.data().plot;
-        addShow(title, released, genre, plot);
+        if(doc.id != "testshow"){
+          addShow(title, released, genre, plot);
+        }
     });
 });
 }
 
 function addShow(title, released, genre, plot){
 
-  console.log("adding shows....");
+  console.log("adding " + title);
 
   var li = document.createElement("li");
   
@@ -136,6 +117,10 @@ function addShow(title, released, genre, plot){
   li.appendChild(document.createElement("br"));
   li.appendChild(document.createTextNode("Plot: " + plot));
 
+  li.onclick = function(ev){
+    ev.target.classList.toggle('checked');
+  }
+
   document.getElementById("myUL").appendChild(li);
 
   var span = document.createElement("SPAN");
@@ -143,13 +128,12 @@ function addShow(title, released, genre, plot){
   span.className = "close";
   span.appendChild(txt);
   li.appendChild(span);
-
-  for (i = 0; i < close.length; i++) {
-    close[i].onclick = function() {
+  span.onclick = function(){
+      deletefromDatabase(title);
       var div = this.parentElement;
       div.style.display = "none";
-    }
   }
+  
 }
 
 function addtoDatabase(title, released, genre, plot){
@@ -171,13 +155,12 @@ function addtoDatabase(title, released, genre, plot){
 }
 
 function deletefromDatabase(title){
-
   var db = firebase.firestore();
-  alert(title);
+
   db.collection("users").doc(currentUserID).collection('showlist')
   .doc(title).delete()
   .then(function() {
-    console.log("Document successfully deleted!");
+    console.log(title + " successfully deleted!");
   })
   .catch(function(error) {
     console.error("Error removing document: ", error);

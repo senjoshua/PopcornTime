@@ -57,11 +57,11 @@ ul li {
   font-size: 14px;
   transition: 0.2s;
   
-  /* make the list items unselectable
+  /* make the list items unselectable */
   -webkit-user-select: none;
   -moz-user-select: none;
   -ms-user-select: none;
-  user-select: none; */
+  user-select: none; 
 }
 
 /* Set all odd list items to a different color (zebra-stripes) */
@@ -104,16 +104,15 @@ ul li.checked::before {
 }
 
 .close:hover {
-  background-color: #f44336;
+  background-color: #710A0A;
   color: white;
 }
 
 /* Style the header */
 .header {
-  background-color: #f44336;
-  padding: 30px 40px;
+  background-color: #710A0A;
+  padding: 10px 20px;
   color: white;
-  text-align: center;
 }
 
 /* Clear floats after the header */
